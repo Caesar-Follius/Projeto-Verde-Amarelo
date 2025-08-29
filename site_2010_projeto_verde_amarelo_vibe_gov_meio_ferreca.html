@@ -1,0 +1,445 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=7" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projeto Verde Amarelo - Governo Federal</title>
+  <style type="text/css">
+    /* 2010 vibes: reset simples, layout com tabela, gradientes toscos, sombras pesadas e cantos arredondados meio irregulares */
+    body { margin:0; padding:0; background:#e9efe4 url('data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=') repeat; font:13px Arial, Tahoma, Verdana, sans-serif; color:#222; }
+    a { color:#0645AD; text-decoration:underline; }
+    a:hover { color:#002b7f; }
+
+    /* Barra gov antiga */
+    #barra-brasil { background:#0b3b0b url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="32"><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="%230f5f0f"/><stop offset="100%" stop-color="%230b3b0b"/></linearGradient><rect width="1200" height="32" fill="url(%23g)"/></svg>') repeat-x; color:#fff; height:32px; border-bottom:1px solid #083108; box-shadow:0 1px 3px rgba(0,0,0,.4); }
+    #barra-brasil .wrap { width:980px; margin:0 auto; height:32px; line-height:32px; }
+    #barra-brasil strong { letter-spacing:1px; }
+    #barra-brasil .links { float:right; font-size:12px; }
+    #barra-brasil .links a { color:#d6f0d6; margin-left:12px; text-decoration:none; }
+
+    /* Cabeçalho com logo e busca */
+    #header { background:#fefefe; border-bottom:1px solid #c9d8c2; box-shadow:0 1px 4px rgba(0,0,0,.15); position:relative }
+    #header .wrap { width:980px; margin:0 auto; padding:12px 0; }
+    #logo { float:left; }
+    #logo .gov { font-weight:bold; font-size:26px; color:#1a3e1a; text-shadow:0 1px 0 #fff; }
+    #logo .sub { font-size:12px; color:#5a5a5a; }
+    #busca { float:right; margin-top:8px; }
+    #busca input[type=text]{ width:240px; padding:6px; border:1px solid #9bb49a; background:#fffdf0; }
+    #busca input[type=submit]{ padding:6px 10px; border:1px solid #7e997d; background:#cde2cc; cursor:pointer; }
+
+    /* Acessibilidade */
+    #acess { clear:both; padding-top:6px; font-size:12px; color:#555; }
+    #acess a { margin-right:10px; }
+
+    /* Menu horizontal */
+    #menu { background:#c6dfc6; border-top:1px solid #9dc09c; border-bottom:1px solid #9dc09c; box-shadow: inset 0 1px 0 #e8f4e8; }
+    #menu .wrap { width:980px; margin:0 auto; }
+    #menu ul { list-style:none; padding:0; margin:0; }
+    #menu li { float:left; }
+    #menu a { display:block; padding:10px 16px; color:#163716; text-decoration:none; border-right:1px solid #a9c6a8; }
+    #menu a:hover, #menu a.active { background:#a9cfa9; }
+    .clr { clear:both; }
+
+    /* Layout com tabela fake (divs) */
+    #container { width:980px; margin:12px auto; }
+    #layout { background:#fff; border:1px solid #cfd9cf; box-shadow:0 0 6px rgba(0,0,0,.08); }
+    #left { width:220px; float:left; background:#f7faf6; border-right:1px solid #dbe6da; }
+    #content { margin-left:221px; background:#fff; }
+
+    /* Sidebar */
+    .box { border-bottom:1px solid #e6eee5; padding:10px; }
+    .box h3 { margin:0 0 8px 0; font-size:14px; color:#194519; border-bottom:1px dotted #b6c9b6; padding-bottom:3px; }
+    .btn-old { display:inline-block; padding:6px 8px; background:#e9f4e9; border:1px solid #9eb79d; border-radius:3px; text-decoration:none; margin:3px 0; }
+
+    /* Conteúdo */
+    .content-wrap { padding:16px 18px; }
+    h1 { font-size:22px; color:#1c4a1c; margin:6px 0 10px; }
+    h2 { font-size:18px; color:#205820; margin:18px 0 8px; }
+    .note { background:#fffbe6; border:1px solid #e5d48a; padding:10px; }
+
+    /* Rodapé */
+    #footer { background:#f0f5ef; border-top:1px solid #cbd8c8; color:#555; padding:12px 0; }
+    #footer .wrap { width:980px; margin:0 auto; }
+    #footer .comic { font-family: 'Comic Sans MS', 'Comic Sans', cursive; font-size:12px; color:#7b2b2b; }
+
+    /* Ticker */
+    #ticker { background:#e3f0e3; border-bottom:1px solid #c7dec6; color:#2b522b; }
+
+    /* Tabelas old-school */
+    table.grid { border-collapse:collapse; width:100%; }
+    table.grid th, table.grid td { border:1px solid #cbdacb; padding:6px; font-size:12px; }
+    table.grid th { background:#f1f7f1; text-align:left; }
+
+    /* Abas simuladas */
+    .tabs { margin-top:10px; }
+    .tabs a { padding:6px 10px; display:inline-block; border:1px solid #b9cbb8; background:#eef6ee; margin-right:6px; text-decoration:none; }
+    .tabs a.active { background:#d7ead7; }
+
+    /* Marquee (2010 vibes total) */
+    marquee { font-size:12px; }
+
+    /* "Selo" toscão */
+    .selos img { display:inline-block; margin-right:8px; border:1px solid #c9c9c9; }
+
+    /* Conteúdos "páginas" */
+    .page { display:none; }
+    .page.active { display:block; }
+
+    .counter { font-family: 'Courier New', monospace; background:#000; color:#0f0; padding:2px 6px; display:inline-block; }
+
+    /* piscante 2010 */
+    .blink{animation:blinkAnim 1s steps(1) infinite}
+    @keyframes blinkAnim{50%{opacity:0}}
+
+    /* banner gif fake (pulsing via css) */
+    .gif-banner{display:inline-block;padding:6px 10px;border:2px dashed #9ec79d;border-radius:6px;box-shadow:inset 0 1px 0 #fff;margin-left:14px;}
+    .gif-banner span{display:inline-block;vertical-align:middle;margin-left:8px}
+
+    /* floating sticky gif */
+    #sticky-gif{position:fixed;right:20px;bottom:20px;width:120px;border:3px solid #cfe6cf;background:#fff;padding:6px;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,.2);}
+
+    /* nostálgico under construction */
+    .under { display:block; margin:8px 0; font-size:12px; }
+  </style>
+</head>
+<body>
+  <!-- Barra Governo Brasil (simplificada) -->
+  <div id="barra-brasil">
+    <div class="wrap">
+      <strong>GOVERNO FEDERAL</strong>
+      <div class="links">
+        <a href="#acessibilidade">Acessibilidade</a>
+        <a href="#mapa">Mapa do Site</a>
+        <a href="#alto-contraste" onclick="document.body.style.filter=document.body.style.filter?'':'grayscale(100%) contrast(120%)';return false;">Alto Contraste</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cabeçalho -->
+  <div id="header">
+    <div class="wrap">
+      <div id="logo">
+        <div class="gov">Projeto Verde Amarelo</div>
+        <div class="sub">Ministério da Comunicação e Inclusão Digital — Governo Federal</div>
+        <div id="acess">
+          Atalhos: <a href="#conteudo" accesskey="1">Ir para o conteúdo [1]</a> | <a href="#menu" accesskey="2">Ir para o menu [2]</a> | <a href="#busca" accesskey="3">Busca [3]</a>
+        </div>
+      </div>
+
+      <!-- GIF piscando toscão -->
+      <div class="gif-banner">
+        <img alt="gif" width="48" height="48" src="data:image/gif;base64,R0lGODlhEAAQAMQfAGZmZv///8bGxs/Pz8nJyfLy8uHh4eDg4MbGxv7+/qampq6urrCwsK+vr6Ojo56enqmpqWtra6urq6ampqbm5uZ+fn5mZmWlpaWJiYmBgYF9fX2tra2VlZQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAB8ALAAAAAAQABAAAAWj4CeOZFlGmQGkWJwqFQSB4gqCkM5m9qg0K1GgoH0Nw2m1m0Qb6Gm0+l0n1Yp1m8Xo9Gg8HhUoHhoKBAQA7" />
+        <span class="blink">NOVO</span>
+      </div>
+
+      <form id="busca" action="#" method="get" onsubmit="alert('Busca simulada (2010)');return false;">
+        <input type="text" name="q" value="" />
+        <input type="submit" value="Buscar" />
+      </form>
+      <div style="clear:both"></div>
+    </div>
+  </div>
+
+  <!-- Menu -->
+  <div id="menu">
+    <div class="wrap">
+      <ul>
+        <li><a href="#home" class="active" onclick="nav('home');return false;">Início</a></li>
+        <li><a href="#sobre" onclick="nav('sobre');return false;">Sobre</a></li>
+        <li><a href="#acoes" onclick="nav('acoes');return false;">Ações</a></li>
+        <li><a href="#transp" onclick="nav('transp');return false;">Transparência</a></li>
+        <li><a href="#imprensa" onclick="nav('imprensa');return false;">Imprensa</a></li>
+        <li><a href="#contato" onclick="nav('contato');return false;">Contato</a></li>
+      </ul>
+      <div class="clr"></div>
+    </div>
+  </div>
+
+  <!-- Ticker -->
+  <div id="ticker">
+    <div class="wrap">
+      <marquee behavior="scroll" scrollamount="3">Aviso: Este é um protótipo de 2010 (estilo retrô). Última atualização: 17/08/2010 — Melhor visualizado no Internet Explorer 7, Firefox 3.6, resolução 1024x768. <span style="color:#b40000;font-weight:bold">EM CONSTRUÇÃO</span></marquee>
+    </div>
+  </div>
+
+  <!-- Container -->
+  <div id="container">
+    <div id="layout">
+      <div id="left">
+        <div class="box">
+          <h3>Links Rápidos</h3>
+          <a class="btn-old" href="#biblio" onclick="nav('biblio');return false;">Biblioteca</a><br/>
+          <a class="btn-old" href="#leg" onclick="nav('leg');return false;">Legislação</a><br/>
+          <a class="btn-old" href="#faq" onclick="nav('faq');return false;">Perguntas Frequentes</a><br/>
+          <a class="btn-old" href="#downloads" onclick="nav('downloads');return false;">Downloads</a><br/>
+        </div>
+        <div class="box">
+          <h3>Contato Rápido</h3>
+          <p>Telefone: (61) 3300-0000<br/>Fax: (61) 3300-0001<br/>Email: <a href="mailto:contato@verdeamarelo.gov.br">contato@verdeamarelo.gov.br</a></p>
+        </div>
+        <div class="box selos">
+          <h3>Selos</h3>
+          <img alt="Acesso à Informação" width="88" height="31" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAAAfCAYAAABp8r3lAAAACXBIWXMAAAsSAAALEgHS3X78AAAAHklEQVRoge3BAQ0AAADCoPdPbQ43oAAAAAAAAAAwGgQbAAE9e2QkAAAAAElFTkSuQmCC"/>
+          <img alt="Padrões Web" width="88" height="31" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAAAfCAYAAABp8r3lAAAACXBIWXMAAAsSAAALEgHS3X78AAAAHklEQVRoge3BAQ0AAADCoPdPbQ43oAAAAAAAAAAwGgQbAAE9e2QkAAAAAElFTkSuQmCC"/>
+          <img alt="Creative Commons" width="88" height="31" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAAAfCAYAAABp8r3lAAAACXBIWXMAAAsSAAALEgHS3X78AAAAHklEQVRoge3BAQ0AAADCoPdPbQ43oAAAAAAAAAAwGgQbAAE9e2QkAAAAAElFTkSuQmCC"/>
+        </div>
+        <div class="box">
+          <h3>Visitantes</h3>
+          <div class="counter" id="counter">00001234</div>
+          <div style="margin-top:8px;font-size:12px">Online: <span id="online">1</span></div>
+        </div>
+
+        <div class="box">
+          <h3>Under Construction</h3>
+          <p class="under"><img alt="constr" width="120" src="data:image/gif;base64,R0lGODlhEAAQAMQfAGZmZv///8bGxs/Pz8nJyfLy8uHh4eDg4MbGxv7+/qampq6urrCwsK+vr6Ojo56enqmpqWtra6urq6ampqbm5uZ+fn5mZmWlpaWJiYmBgYF9fX2tra2VlZQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAB8ALAAAAAAQABAAAAWj4CeOZFlGmQGkWJwqFQSB4gqCkM5m9qg0K1GgoH0Nw2m1m0Qb6Gm0+l0n1Yp1m8Xo9Gg8HhUoHhoKBAQA7"/></p>
+        </div>
+
+      </div>
+
+      <div id="content">
+        <a name="conteudo"></a>
+        <div class="content-wrap">
+
+          <!-- HOME -->
+          <div class="page active" id="page-home">
+            <h1>Projeto Verde Amarelo</h1>
+            <p class="note"><strong>Missão:</strong> combater a desinformação e fortalecer a educação midiática nas redes sociais emergentes.</p>
+
+            <h2>Destaques</h2>
+            <ul>
+              <li>Lançamento do Guia de Verificação Rápida (v1.0)</li>
+              <li>Parceria com universidades públicas — núcleos de checagem</li>
+              <li>Campanhas de rádio e TV: <em>“Compartilhou? Conferiu antes.”</em></li>
+            </ul>
+
+            <div class="tabs">
+              <a href="#tab1" class="active" onclick="showTab(1);return false;">Notícias</a>
+              <a href="#tab2" onclick="showTab(2);return false;">Agenda</a>
+              <a href="#tab3" onclick="showTab(3);return false;">Boletins</a>
+            </div>
+
+            <div id="tab-1">
+              <table class="grid">
+                <tr><th>Data</th><th>Título</th><th>Resumo</th></tr>
+                <tr><td>15/08/2010</td><td>Nota Pública</td><td>Esclarecimentos sobre rumores em redes sociais.</td></tr>
+                <tr><td>12/08/2010</td><td>Convênio com IFs</td><td>Laboratórios regionais de checagem iniciam atividades.</td></tr>
+                <tr><td>09/08/2010</td><td>Campanha na TV</td><td>Peças de 30s explicam como identificar boatos.</td></tr>
+              </table>
+            </div>
+            <div id="tab-2" style="display:none">
+              <ul>
+                <li>17/08/2010 — Reunião do Comitê Gestor</li>
+                <li>20/08/2010 — Encontro com imprensa independente</li>
+                <li>28/08/2010 — Oficina: “Como funciona uma checagem”</li>
+              </ul>
+            </div>
+            <div id="tab-3" style="display:none">
+              <p>Baixe os boletins mensais (PDF):</p>
+              <ul>
+                <li><a href="#">Boletim Julho/2010 (PDF, 2.1MB)</a></li>
+                <li><a href="#">Boletim Junho/2010 (PDF, 1.8MB)</a></li>
+              </ul>
+            </div>
+
+            <h2>Ferramentas (beta)</h2>
+            <p>Teste a nossa ferramenta <strong>Verifica+</strong> (versão beta). Ainda em desenvolvimento — use com cautela.</p>
+
+          </div>
+
+          <!-- SOBRE -->
+          <div class="page" id="page-sobre">
+            <h1>Sobre o Projeto</h1>
+            <p>O Projeto Verde Amarelo é uma iniciativa governamental voltada ao enfrentamento da desinformação, com ações de educação midiática, parcerias com universidades e desenvolvimento de ferramentas de verificação.</p>
+            <h2>Objetivos</h2>
+            <ul>
+              <li>Promover alfabetização midiática.</li>
+              <li>Ampliar a capacidade de checagem de fatos.</li>
+              <li>Apoiar pesquisas sobre circulação de boatos nas redes.</li>
+            </ul>
+            <h2>Como funciona</h2>
+            <p>Estrutura em rede com núcleos estaduais, comitê gestor e conselho consultivo. Relatórios trimestrais publicados em <a href="#" onclick="nav('transp');return false;">Transparência</a>.</p>
+          </div>
+
+          <!-- AÇÕES -->
+          <div class="page" id="page-acoes">
+            <h1>Ações e Programas</h1>
+            <table class="grid">
+              <tr><th>Programa</th><th>Descrição</th><th>Status</th></tr>
+              <tr><td>EducaMídia Escolar</td><td>Materiais didáticos para escolas públicas.</td><td>Em piloto</td></tr>
+              <tr><td>ObservaRede</td><td>Monitoramento de boatos recorrentes.</td><td>Ativo</td></tr>
+              <tr><td>Plataforma Verifica+</td><td>Ferramenta web para checagem básica.</td><td>Beta</td></tr>
+            </table>
+            <p class="note">Para participar como voluntário, preencha o formulário em <a href="#" onclick="nav('contato');return false;">Contato</a>.</p>
+          </div>
+
+          <!-- TRANSPARÊNCIA -->
+          <div class="page" id="page-transp">
+            <h1>Transparência</h1>
+            <p>Planilhas com execução orçamentária (formato XLS):</p>
+            <ul>
+              <li><a href="#">Despesas 2010 - 2º Semestre (XLS)</a></li>
+              <li><a href="#">Contratos e Convênios (XLS)</a></li>
+            </ul>
+            <h2>Prestação de Contas</h2>
+            <table class="grid">
+              <tr><th>Item</th><th>Valor (R$)</th><th>Observações</th></tr>
+              <tr><td>Campanhas de mídia</td><td>480.000,00</td><td>TV/rádio e impressos</td></tr>
+              <tr><td>Parcerias acadêmicas</td><td>320.000,00</td><td>Bolsas e equipamentos</td></tr>
+              <tr><td>Plataforma digital</td><td>150.000,00</td><td>Desenvolvimento inicial</td></tr>
+            </table>
+          </div>
+
+          <!-- IMPRENSA -->
+          <div class="page" id="page-imprensa">
+            <h1>Imprensa</h1>
+            <p>Contato para jornalistas: <strong>imprensa@verdeamarelo.gov.br</strong></p>
+            <h2>Releases</h2>
+            <ul>
+              <li><a href="#">Release 15/08/2010 — Nota à imprensa</a></li>
+              <li><a href="#">Release 01/08/2010 — Lançamento do projeto</a></li>
+            </ul>
+            <h2>Kit de Imprensa</h2>
+            <p><a href="#">Baixar logotipo (ZIP)</a> | <a href="#">Manual de uso (PDF)</a></p>
+          </div>
+
+          <!-- CONTATO -->
+          <div class="page" id="page-contato">
+            <h1>Fale Conosco</h1>
+            <form onsubmit="alert('Mensagem enviada (simulada). Obrigado!');return false;">
+              <p><label>Nome:<br/><input type="text" name="nome" style="width:60%"/></label></p>
+              <p><label>E-mail:<br/><input type="text" name="email" style="width:60%"/></label></p>
+              <p><label>Assunto:<br/><input type="text" name="assunto" style="width:60%"/></label></p>
+              <p><label>Mensagem:<br/><textarea name="msg" rows="6" style="width:90%"></textarea></label></p>
+              <p><input type="submit" value="Enviar"/> <input type="reset" value="Limpar"/></p>
+            </form>
+            <p>Endereço: Esplanada dos Ministérios, Bloco X — Brasília/DF — CEP 70000-000</p>
+          </div>
+
+          <!-- BIBLIOTECA -->
+          <div class="page" id="page-biblio">
+            <h1>Biblioteca</h1>
+            <ul>
+              <li><a href="#">Guia de Verificação Rápida (PDF)</a></li>
+              <li><a href="#">Cartilha para Escolas (PDF)</a></li>
+              <li><a href="#">Relatório Técnico 01/2010 (PDF)</a></li>
+            </ul>
+          </div>
+
+          <!-- LEGISLAÇÃO -->
+          <div class="page" id="page-leg">
+            <h1>Legislação</h1>
+            <p>Normas, portarias e decretos relacionados ao Projeto.</p>
+            <ul>
+              <li>Portaria nº 123/2010 — Institui o Comitê Gestor.</li>
+              <li>Portaria nº 145/2010 — Cria núcleos estaduais.</li>
+            </ul>
+          </div>
+
+          <!-- FAQ -->
+          <div class="page" id="page-faq">
+            <h1>Perguntas Frequentes</h1>
+            <p><strong>O que é desinformação?</strong><br/>Conteúdo falso ou enganoso compartilhado como se fosse verdadeiro.</p>
+            <p><strong>Como participar?</strong><br/>Acompanhe os editais e capacitações na área de <a href="#" onclick="nav('acoes');return false;">Ações</a>.</p>
+          </div>
+
+          <!-- DOWNLOADS -->
+          <div class="page" id="page-downloads">
+            <h1>Downloads</h1>
+            <ul>
+              <li><a href="#">Template de Release (DOC)</a></li>
+              <li><a href="#">Planilha de Prestação de Contas (XLS)</a></li>
+              <li><a href="#">Pôster da Campanha (JPG)</a></li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="clr"></div>
+    </div>
+  </div>
+
+  <!-- Sticky GIF na tela -->
+  <div id="sticky-gif">
+    <img alt="selo" width="100" src="data:image/gif;base64,R0lGODlhEAAQAMQfAGZmZv///8bGxs/Pz8nJyfLy8uHh4eDg4MbGxv7+/qampq6urrCwsK+vr6Ojo56enqmpqWtra6urq6ampqbm5uZ+fn5mZmWlpaWJiYmBgYF9fX2tra2VlZQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAB8ALAAAAAAQABAAAAWj4CeOZFlGmQGkWJwqFQSB4gqCkM5m9qg0K1GgoH0Nw2m1m0Qb6Gm0+l0n1Yp1m8Xo9Gg8HhUoHhoKBAQA7" />
+    <div style="text-align:center;font-size:11px;margin-top:6px">Projeto Beta</div>
+  </div>
+
+  <!-- Rodapé -->
+  <div id="footer">
+    <div class="wrap">
+      <div style="float:left">
+        <p class="comic">&copy; 2010 Governo Federal — Projeto Verde Amarelo. Conteúdo sob licença Creative Commons BY-NC-SA.</p>
+        <p class="comic">Última atualização: 17/08/2010 — Responsável: Coordenação de Comunicação Social.</p>
+      </div>
+      <div style="float:right; text-align:right">
+        <p><a href="#" onclick="window.print();return false;">Versão para impressão</a><br/>
+        <a href="#mapa">Mapa do Site</a></p>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    // Simples trocador de páginas (sem SPA moderno, 2010 feelings)
+    function nav(page){
+      var pages = ['home','sobre','acoes','transp','imprensa','contato','biblio','leg','faq','downloads'];
+      for(var i=0;i<pages.length;i++){
+        var id = 'page-'+pages[i];
+        var el = document.getElementById(id);
+        if(el) el.className = 'page' + (pages[i]===page?' active':'');
+      }
+      // Atualiza destaque do menu
+      var links = document.querySelectorAll('#menu a');
+      for(var j=0;j<links.length;j++){ links[j].className = links[j].href.indexOf('#'+page)>-1 ? 'active' : ''; }
+      // rolar pro topo do conteúdo
+      window.scrollTo(0, document.getElementById('container').offsetTop);
+    }
+
+    function showTab(n){
+      document.getElementById('tab-1').style.display = (n==1?'block':'none');
+      document.getElementById('tab-2').style.display = (n==2?'block':'none');
+      document.getElementById('tab-3').style.display = (n==3?'block':'none');
+      var t = document.querySelectorAll('.tabs a');
+      for(var i=0;i<t.length;i++){ t[i].className = (i===(n-1)?'active':''); }
+    }
+
+    // contador nostálgico + salvar em localStorage para persistir entre visitas
+    (function(){
+      var key = 'vaconte_verdeamarelo_visits';
+      try{
+        var v = parseInt(localStorage.getItem(key),10) || 1234;
+        v += Math.floor(Math.random()*9)+1; // incremento aleatório (pra parecer real)
+        localStorage.setItem(key,v);
+        var c = document.getElementById('counter');
+        if(c) c.innerHTML = ('00000000'+v).slice(-8);
+      }catch(e){/* nada */}
+
+      // online simples (pseudo)
+      var online = document.getElementById('online'); if(online) online.innerText = Math.floor(Math.random()*6)+1;
+
+      // efeito de 'gif' piscando (só pra vibes)
+      var b = document.querySelector('.gif-banner .blink'); if(b){ /* já animado via css */ }
+    })();
+
+    // contador de visitas exibido estilo 2010 (retro ripple)
+    function prettyCounter(){
+      var c = document.getElementById('counter'); if(!c) return;
+      c.style.transition = 'transform .2s';
+      c.style.transform = 'scale(1.06)';
+      setTimeout(function(){ c.style.transform='scale(1)'; },220);
+    }
+    setInterval(prettyCounter,3500);
+
+    // easter egg: apertar C, O, M, I, C para ativar Comic Sans total
+    (function(){
+      var seq = '';
+      document.addEventListener('keydown', function(e){ seq += String.fromCharCode(e.keyCode || e.which || 0);
+        if(seq.indexOf('COMIC')>-1){ document.body.style.fontFamily="'Comic Sans MS', 'Comic Sans', cursive"; document.querySelectorAll('.comic').forEach(function(n){n.style.fontFamily="'Comic Sans MS', 'Comic Sans', cursive"}); seq=''; }
+        if(seq.length>10) seq = seq.slice(-5);
+      });
+    })();
+  </script>
+</body>
+</html>
